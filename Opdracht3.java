@@ -1,9 +1,9 @@
 import java.util.*;
 /**
- * Write a description of class Opdracht3 here.
+ * Opdracht3
  * 
- * @author Michael van der Net
- * @version (a version number or a date)
+ * @author  Groep B3
+ * @version TI1.1 2015
  */
 public class Opdracht3
 {
@@ -101,4 +101,34 @@ public class Opdracht3
         return p;
     }
     
+    public static double meesteNeerslag(Periode periode)
+    {
+        double max = 0;
+        double tmax = 0;
+        boolean inRegen = false;
+        for(int i = 0; i < periode.getMetingen().size(); i++)
+        {
+            Meting m = periode.getMetingen().get(i);
+            if(m.getRainRate()!=0)
+            {
+                if(!inRegen)
+                {
+                    inRegen = true;
+                    tmax = tmax + m.getRainRate();
+                }
+                if(tmax > max)
+                {
+                    max = tmax;
+                }        
+            }
+            else
+            {
+                if(inRegen){
+                    inRegen = false;
+                    tmax = 0;
+                }
+            }
+        }
+        return max;
+    }
 }

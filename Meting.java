@@ -1,4 +1,10 @@
 import java.util.*;
+/**
+ * Meting
+ * 
+ * @author  Groep B3
+ * @version TI1.1 2015
+ */
 public class Meting
 {
 

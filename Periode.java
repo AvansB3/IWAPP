@@ -1,10 +1,10 @@
 import java.util.*;
 import java.util.Map.Entry;
 /**
- * Write a description of class Periode here.
+ * Periode
  * 
  * @author  Groep B3
- * @version 13 oktober 2015
+ * @version TI1.1 2015
  */
 public class Periode
 {

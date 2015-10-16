@@ -1,9 +1,9 @@
 import java.util.*;
 /**
- * Write a description of class Metingen here.
+ * AvansWeerstation
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  Groep B3
+ * @version TI1.1 2015
  */
 public class AvansWeerstation
 {
