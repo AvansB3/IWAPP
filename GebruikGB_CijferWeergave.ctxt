@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.params=
+comment0.target=GebruikGB_CijferWeergave()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Cijferweergave\r\n
+comment1.params=
+comment1.target=void\ O_3__schrijfCijfersInEenDisplay()
+comment2.params=
+comment2.target=void\ O_3__schrijfCijfersInAlleDisplays()
+numComments=3

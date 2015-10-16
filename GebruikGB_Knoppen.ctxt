@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=boolean\ blauweKnopLinks()
+comment1.params=
+comment1.target=boolean\ blauweKnopRechts()
+comment2.params=
+comment2.target=void\ knopThread()
+comment3.params=integer
+comment3.target=java.util.ArrayList\ getNumbers(int)
+comment4.params=cijfer
+comment4.target=void\ plaatsenCijfer(int)
+comment5.params=
+comment5.target=void\ maakschoonbeter()
+numComments=6
