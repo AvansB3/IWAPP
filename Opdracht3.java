@@ -38,7 +38,7 @@ public class Opdracht3
                 {
                     newLen++;
                 }
-                
+
                 if(newLen > len)
                 {
                     len = newLen;
@@ -57,7 +57,7 @@ public class Opdracht3
         p.setMetingen(new ArrayList<Meting>(periode.getMetingen().subList(index, index+len)));
         return p;
     }
-    
+
     public static Periode langstDurendeNeerslag(Periode periode)
     {
         int newIndex = 0;
@@ -68,7 +68,7 @@ public class Opdracht3
         for(int i = 0; i < periode.getMetingen().size(); i++)
         {
             Meting m = periode.getMetingen().get(i);
-            
+
             if(m.getRainRate()!=0)
             {
                 if(!inRegen)
@@ -81,7 +81,7 @@ public class Opdracht3
                 {
                     newLen++;
                 }
-                
+
                 if(newLen > len)
                 {
                     len = newLen;
@@ -100,33 +100,25 @@ public class Opdracht3
         p.setMetingen(new ArrayList<Meting>(periode.getMetingen().subList(index, index+len)));
         return p;
     }
-    
+
     public static double meesteNeerslag(Periode periode)
     {
         double max = 0;
         double tmax = 0;
-        boolean inRegen = false;
         for(int i = 0; i < periode.getMetingen().size(); i++)
         {
             Meting m = periode.getMetingen().get(i);
             if(m.getRainRate()!=0)
             {
-                if(!inRegen)
-                {
-                    inRegen = true;
-                    tmax = tmax + m.getRainRate();
-                }
-                if(tmax > max)
+                tmax = tmax + m.getRainRate();
+                if (tmax > max)
                 {
                     max = tmax;
                 }        
             }
             else
             {
-                if(inRegen){
-                    inRegen = false;
-                    tmax = 0;
-                }
+                tmax = 0;
             }
         }
         return max;
