@@ -16,6 +16,9 @@ public class Opdracht3
 
     }
 
+    /*
+     * Geeft de langst durende periode van droogte uit `periode`
+     */
     public static Periode langstDurendeDroogte(Periode periode)
     {
         int newIndex = 0;
@@ -58,6 +61,10 @@ public class Opdracht3
         return p;
     }
 
+    
+    /*
+     * Geeft de langst durende periode van neerslag uit `periode`
+     */
     public static Periode langstDurendeNeerslag(Periode periode)
     {
         int newIndex = 0;
@@ -101,6 +108,9 @@ public class Opdracht3
         return p;
     }
 
+    /*
+     * Geeft de meeste neerslag in een regenbui uit `periode`
+     */
     public static double meesteNeerslag(Periode periode)
     {
         double max = 0;
