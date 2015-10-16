@@ -26,6 +26,16 @@ public class Periode
         dagEindePeriode = eind;
     }
 
+    public void setDagBeginPeriode(GregorianCalendar begin)
+    {
+        dagBeginPeriode = begin;
+    }
+
+    public void setDagEindPeriode(GregorianCalendar eind)
+    {
+        dagEindePeriode = eind;
+    }
+
     // Zonder tijd, wordt de start aan het begin van de dag gezet:
     public void setDagBeginPeriode(int jaar, int maand, int dag)
     {
@@ -431,7 +441,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public double getGemiddeldeInsideTemp()
     {
         double totaal = 0;
@@ -444,7 +454,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public double getGemiddeldeBarometer()
     {
         double totaal = 0;
@@ -457,7 +467,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public double getGemiddeldeInsideHum()
     {
         double totaal = 0;
@@ -483,7 +493,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public double getGemiddeldeWindSpeed()
     {
         double totaal = 0;
@@ -496,7 +506,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public double getGemiddeldeAvgWindSpeed()
     {
         double totaal = 0;
@@ -509,7 +519,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public double getGemiddeldeRainRate()
     {
         double totaal = 0;
@@ -522,7 +532,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public double getGemiddeldeUVLevel()
     {
         double totaal = 0;
@@ -535,7 +545,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public double getGemiddeldeSolarRad()
     {
         double totaal = 0;
@@ -548,7 +558,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public double getGemiddeldeXmitBatt()
     {
         double totaal = 0;
@@ -561,7 +571,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public double getGemiddeldeBattLevel()
     {
         double totaal = 0;
@@ -574,7 +584,7 @@ public class Periode
         double gem = totaal / metingen.size();
         return gem;
     }
-    
+
     public String getGemiddeldeWindDirDeg()
     {
         int totaal = 0;
@@ -1136,8 +1146,8 @@ public class Periode
         }
         return mediaan;
     } 
-    
-     /**
+
+    /**
      * standaardafwijking -------------------------------------------------------------------------------------------------
      * --------------------------------------------------------------------------------------------------------------------
      * --------------------------------------------------------------------------------------------------------------------
@@ -1156,7 +1166,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingInsideTemp()
     {
         double gemiddelde = getGemiddeldeInsideTemp();
@@ -1171,7 +1181,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingOutsideTemp()
     {
         double gemiddelde = getGemiddeldeOutsideTemp();
@@ -1186,7 +1196,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingInsideHum()
     {
         double gemiddelde = getGemiddeldeInsideHum();
@@ -1201,7 +1211,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingOutsideHum()
     {
         double gemiddelde = getGemiddeldeOutsideHum();
@@ -1216,7 +1226,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingWindSpeed()
     {
         double gemiddelde = getGemiddeldeWindSpeed();
@@ -1231,7 +1241,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingAvgWindSpeed()
     {
         double gemiddelde = getGemiddeldeAvgWindSpeed();
@@ -1246,7 +1256,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingRainRate()
     {
         double gemiddelde = getGemiddeldeRainRate();
@@ -1261,7 +1271,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingUVLevel()
     {
         double gemiddelde = getGemiddeldeUVLevel();
@@ -1276,7 +1286,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingSolarRad()
     {
         double gemiddelde = getGemiddeldeSolarRad();
@@ -1291,7 +1301,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingXmitBatt()
     {
         double gemiddelde = getGemiddeldeXmitBatt();
@@ -1306,7 +1316,7 @@ public class Periode
         return standaardafwijking;
 
     }
-    
+
     public double getStandaardafwijkingBattLevel()
     {
         double gemiddelde = getGemiddeldeBattLevel();
@@ -1321,4 +1331,8 @@ public class Periode
         return standaardafwijking;
 
     }
+
+    public ArrayList<Meting> getMetingen(){return this.metingen;}
+
+    public void setMetingen(ArrayList<Meting> metingen){this.metingen = metingen;}
 }

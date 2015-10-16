@@ -23,9 +23,9 @@ public class Opdracht3
         int len = 0;
         int index = 0;
         boolean inDroogte = false;
-        for(int i = 0; i < periode.metingen.size(); i++)
+        for(int i = 0; i < periode.getMetingen().size(); i++)
         {
-            Meting m = periode.metingen.get(i);
+            Meting m = periode.getMetingen().get(i);
             if(m.getRainRate()==0)
             {
                 if(!inDroogte)
@@ -52,9 +52,9 @@ public class Opdracht3
             }
         }
         Periode p = new Periode();
-        p.setDagBeginPeriode(periode.metingen.get(index).getDateStamp());
-        p.setDagEindPeriode(periode.metingen.get(index+len).getDateStamp());
-        p.metingen = new ArrayList<Meting>(periode.metingen.subList(index, index+len));
+        p.setDagBeginPeriode(periode.getMetingen().get(index).getDateStamp());
+        p.setDagEindPeriode(periode.getMetingen().get(index+len).getDateStamp());
+        p.setMetingen(new ArrayList<Meting>(periode.getMetingen().subList(index, index+len)));
         return p;
     }
     
@@ -65,9 +65,9 @@ public class Opdracht3
         int len = 0;
         int index = 0;
         boolean inRegen = false;
-        for(int i = 0; i < periode.metingen.size(); i++)
+        for(int i = 0; i < periode.getMetingen().size(); i++)
         {
-            Meting m = periode.metingen.get(i);
+            Meting m = periode.getMetingen().get(i);
             
             if(m.getRainRate()!=0)
             {
@@ -95,9 +95,9 @@ public class Opdracht3
             }
         }
         Periode p = new Periode();
-        p.setDagBeginPeriode(periode.metingen.get(index).getDateStamp());
-        p.setDagEindPeriode(periode.metingen.get(index+len).getDateStamp());
-        p.metingen = new ArrayList<Meting>(periode.metingen.subList(index, index+len));
+        p.setDagBeginPeriode(periode.getMetingen().get(index).getDateStamp());
+        p.setDagEindPeriode(periode.getMetingen().get(index+len).getDateStamp());
+        p.setMetingen(new ArrayList<Meting>(periode.getMetingen().subList(index, index+len)));
         return p;
     }
     

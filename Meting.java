@@ -1,8 +1,9 @@
+import java.util.*;
 public class Meting
 {
 
     private String stationId;
-    private java.sql.Timestamp dateStamp;
+    private GregorianCalendar dateStamp = new GregorianCalendar();
     private String nameMeter;
     private String geoLoc;
     private double barometer;
@@ -25,6 +26,7 @@ public class Meting
     
     public Meting(Measurement mes)
     {
+        this.dateStamp.setTime(mes.getDateStamp());
         Calculator c = new Calculator();
         this.barometer = c.luchtdruk(mes.getBarometer());
         this.insideTemp = c.temperatuur(mes.getInsideTemp());
@@ -53,21 +55,13 @@ public class Meting
         
     }
     
-    public Meting(Measurement mes, String operator, String geoLoc, java.sql.Timestamp dateStamp)
-    {
-        this(mes);
-        this.dateStamp = dateStamp;
-        this.nameMeter = operator;
-        this.geoLoc = geoLoc;
-    }
-    
     // stationId
     public void setStationId (String str) { this.stationId = str;};
     public String getStationId () { return stationId; };
 
     // dateStamp
-    public void setDateStamp (java.sql.Timestamp ts) { this.dateStamp = ts;};
-    public java.sql.Timestamp getDateStamp () { return dateStamp; };
+    public void setDateStamp (GregorianCalendar ts) { this.dateStamp = ts;};
+    public GregorianCalendar getDateStamp () { return dateStamp; };
 
     // barometer
     public void setBarometer (short val) { this.barometer = val;};
