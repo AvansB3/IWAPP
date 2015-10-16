@@ -172,4 +172,15 @@ public class Calculator
         return windRichting;
     }
     
+    /**
+    * windDirectionInDegrees
+    *
+    * @param mval Meetwaarde van het vp2pro weerstation
+    * @return Windrichting in woorden
+    */
+    public int windRichtingGraden(short mval)
+    {
+        int windRichtingGraden = mval;
+        return windRichtingGraden;
+    }
 }

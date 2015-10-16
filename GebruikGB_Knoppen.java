@@ -10,7 +10,14 @@ public class GebruikGB_Knoppen
 
     public static boolean blauweKnopLinks()
     {
-        return IO.readShort(0x90) != 0;
+        if( IO.readShort(0x90) != 0 )
+        {
+            return true;
+        } 
+        else
+        {
+            return false;
+        }
     }
     
      public static boolean blauweKnopRechts()

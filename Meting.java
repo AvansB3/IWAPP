@@ -1,9 +1,8 @@
-import java.util.*;
 public class Meting
 {
 
     private String stationId;
-    private GregorianCalendar dateStamp = new GregorianCalendar();
+    private java.sql.Timestamp dateStamp;
     private String nameMeter;
     private String geoLoc;
     private double barometer;
@@ -13,6 +12,7 @@ public class Meting
     private double windSpeed;
     private double avgWindSpeed;
     private String windDir;
+    private int windDirDeg;
     private double outsideHum;
     private double rainRate;
     private double UVLevel;
@@ -25,7 +25,6 @@ public class Meting
     
     public Meting(Measurement mes)
     {
-        this.dateStamp.setTime(mes.getDateStamp());
         Calculator c = new Calculator();
         this.barometer = c.luchtdruk(mes.getBarometer());
         this.insideTemp = c.temperatuur(mes.getInsideTemp());
@@ -34,6 +33,7 @@ public class Meting
         this.windSpeed = c.windSnelheid(mes.getWindSpeed());
         this.avgWindSpeed = c.windSnelheid(mes.getAvgWindSpeed());
         this.windDir = c.windDirection(mes.getWindDir());
+        this.windDirDeg = c.windRichtingGraden(mes.getWindDir());
         this.outsideHum = c.luchtVochtigheid(mes.getOutsideHum());
         this.rainRate = c.regenMeter(mes.getRainRate());
         this.UVLevel = c.uvIndex(mes.getUVLevel());
@@ -53,13 +53,21 @@ public class Meting
         
     }
     
+    public Meting(Measurement mes, String operator, String geoLoc, java.sql.Timestamp dateStamp)
+    {
+        this(mes);
+        this.dateStamp = dateStamp;
+        this.nameMeter = operator;
+        this.geoLoc = geoLoc;
+    }
+    
     // stationId
     public void setStationId (String str) { this.stationId = str;};
     public String getStationId () { return stationId; };
 
     // dateStamp
-    public void setDateStamp (java.sql.Timestamp ts) { this.dateStamp.setTime(ts);};
-    public GregorianCalendar getDateStamp () { return dateStamp; };
+    public void setDateStamp (java.sql.Timestamp ts) { this.dateStamp = ts;};
+    public java.sql.Timestamp getDateStamp () { return dateStamp; };
 
     // barometer
     public void setBarometer (short val) { this.barometer = val;};
@@ -90,6 +98,9 @@ public class Meting
     public void setWindDir (String val) { this.windDir = val;};
     public String getWindDir () { return windDir; };
 
+    // windDirDeg
+    public void setWindDirDeg (short val) { this.windDirDeg = val;};
+    public int getWindDirDeg () { return windDirDeg; };
 
     // outsideHum
     public void setOutsideHum (short val) { this.outsideHum = val;};
