@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.params=
-comment0.target=Opdracht3()
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Opdracht3\r\n
-comment1.params=periode
-comment1.target=Periode\ langstDurendeDroogte(Periode)
-comment2.params=periode
-comment2.target=Periode\ langstDurendeNeerslag(Periode)
-numComments=3
