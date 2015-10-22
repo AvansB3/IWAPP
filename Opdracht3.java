@@ -124,7 +124,7 @@ public class Opdracht3
                 if (tmax > max)
                 {
                     max = tmax;
-                }        
+                }       
             }
             else
             {
