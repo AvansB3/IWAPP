@@ -1,15 +1,11 @@
-/**
- * <p>Title: Weerstation</p>
- * <p>Description: Database interface tussen applicatie en weerstation</p>
- * <p>Copyright: Copyright (c) 2009</p>
- * <p>Company: Avans Hogeschool Breda</p>
- * @author Diederich Kroeske
- * @version 1.0
- */
-
 import java.sql.*;
 import java.util.*;
-
+/**
+ * WeerstationConnector
+ * 
+ * @author  Groep B3
+ * @version TI1.1 2015
+ */
 public class WeerstationConnector
 {
 

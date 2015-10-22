@@ -1,9 +1,8 @@
-
 /**
- * Test Class voor Calculatorr
+ * CalculatorTest
  * 
- * @author (Groep B3) 
- * @version (18/9/2015)
+ * @author  Groep B3
+ * @version TI1.1 2015
  */
 public class CalculatorTest
 {

@@ -1,10 +1,10 @@
 import java.util.*;
 import java.util.Map.Entry;
 /**
- * Write a description of class Periode here.
+ * Periode
  * 
  * @author  Groep B3
- * @version 13 oktober 2015
+ * @version TI1.1 2015
  */
 public class Periode
 {
@@ -70,9 +70,8 @@ public class Periode
 
     public long geefAantalVolledigeDagenInPeriode()
     {
-        long antwoord = 0;
-        antwoord = (int)(dagEindePeriode.getTime().getTime() - dagBeginPeriode.getTime().getTime()) / aantalMilliSecondenPerDag;
-        return antwoord;
+        return ((dagEindePeriode.getTimeInMillis() - dagBeginPeriode.getTimeInMillis()) / aantalMilliSecondenPerDag)+1;
+
     }
 
     public boolean ditMomentValtInDezePeriode (GregorianCalendar ditMoment)
@@ -94,10 +93,13 @@ public class Periode
 
     public void vullen(ArrayList<Measurement> meas)
     {
+        
         for(Measurement m : meas)
         {
             metingen.add(new Meting(m));
         }
+        dagBeginPeriode = metingen.get(0).getDateStamp();
+        dagEindePeriode = metingen.get(metingen.size()-1).getDateStamp();
     }
 
     /**

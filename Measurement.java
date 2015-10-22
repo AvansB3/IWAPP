@@ -1,3 +1,9 @@
+/**
+ * Measurement
+ * 
+ * @author  Groep B3
+ * @version TI1.1 2015
+ */
 public class Measurement
 {
 
