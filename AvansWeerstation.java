@@ -15,8 +15,12 @@ public class AvansWeerstation
     public AvansWeerstation()
     {
         guiFaceMenu = new GuiFaceMenu(connector);
-        IO.init();
-        new Thread(() -> {GBKnoppen.aanUitThread(this); }).start();
+        if(!IO.init())
+        {
+            System.out.println("ERROR: Guiboard niet gevonden!");
+            return;
+        }
+        new Thread(() -> {GBKnoppen.knopThread(guiFaceMenu); }).start();
     }
     
     public Periode getPeriodeDag()
@@ -42,11 +46,13 @@ public class AvansWeerstation
     
     public void start()
     {
+        System.out.println("Starting...");
         guiFaceMenu.start();
     }
     
     public void stop()
     {
+        System.out.println("Stopping...");
         guiFaceMenu.stop();
     }
 }

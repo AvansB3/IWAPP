@@ -15,35 +15,56 @@ public class GBKnoppen
     {
 
     }
-    
+
     public static boolean blauweKnopLinks()
     {
-        if(IO.readShort(0x90) != 0)
-        System.out.println("Wauw linker knop");
-        return IO.readShort(0x90) != 0;
+        return IO.readShort(0x0090) == 1;
     }
-    
-     public static boolean blauweKnopRechts()
+
+    public static boolean blauweKnopRechts()
     {
-        if(IO.readShort(0x100) != 0)
-        System.out.println("Wauw rechter knop");
-        return IO.readShort(0x100) != 0;
+        return IO.readShort(0x0100) == 1;
     }
-    
-    public static void aanUitThread(AvansWeerstation weerstation)
+
+    public static void knopThread(GuiFaceMenu menu)
     {
-        boolean state=false;
+        boolean left = false;
+        boolean right = false;
+        boolean red = false;
         while(true)
         {
-            if (IO.readShort(0x80) != 0 && !state){
-                weerstation.start();
-                state=true;
+            if(IO.readShort(0x0090)==1 && !left)
+            {
+                System.out.println("linker knop in");
+                menu.knopLinks();
+                left = true;
             }
-            if (IO.readShort(0x80) == 0 && state){
-                weerstation.stop();
-                state=false;
+            if(IO.readShort(0x0090)==0 && left)
+                left = false;
+
+            if(IO.readShort(0x0100)==1 && !right)
+            {
+                System.out.println("rechter knop in");
+                menu.knopRechts();
+                right = true;
             }
+            if(IO.readShort(0x0100)==0 && right)
+                right = false;
+
+            if(IO.readShort(0x0080)==1 && !red)
+            {
+                System.out.println("rode knop in");
+                menu.start();
+                red = true;
+            }
+            if(IO.readShort(0x0080)==0 && red)
+            {
+                System.out.println("rode knop uit");
+                menu.stop();
+                red = false;
+            }
+            IO.delay(1000);
         }
-        
     }
 }
+

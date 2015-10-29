@@ -666,7 +666,24 @@ public class WeerstationConnector
         {
             // query:
             Statement s = myConn.createStatement();
-            s.executeQuery("SELECT * FROM measurement ORDER BY measurementId DESC LIMIT "+amount+";");
+            s.executeQuery("SELECT stationId, timestamp, " +
+                "barometer, " +
+                "insideTemp, " +
+                "insideHum, " +
+                "outsideTemp, " +
+                "windSpeed, " +
+                "avgWindSpeed, " +
+                "windDir, " +
+                "outsideHum, " +
+                "rainRate, " +
+                "UVLevel, " +
+                "solarRad, " +
+                "xmitBatt, " +
+                "battLevel, " +
+                    //  "foreIcon, " +
+                "sunrise, " +
+                "sunset " +
+                "FROM measurement order by measurementId desc limit "+amount);
 
             ResultSet rs = s.getResultSet();
             int count = 0;

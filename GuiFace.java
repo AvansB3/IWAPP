@@ -9,5 +9,6 @@ public abstract class GuiFace
 {
     public abstract void init();
     public abstract void draw();
-    public abstract void update(PeriodeLengte len);
+    public abstract void update();
+    public abstract void setPeriodeLengte(PeriodeLengte len);
 }

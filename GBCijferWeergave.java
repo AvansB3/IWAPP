@@ -105,7 +105,7 @@ public class GBCijferWeergave
     
     public static void maakAlleLeeg()
     {
-        for ( int z = 0x8; z <=0x18; z += 2)
+        for ( int z = 0x8; z < 0x36; z += 2)
         {
             IO.writeShort(z, 256);
         }

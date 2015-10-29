@@ -10,7 +10,6 @@ public class GuiFaceMenu
     private ArrayList<GuiFace> guifaces = new ArrayList<GuiFace>();
     private GuiFace currentFace;
 
-    Thread _menuThread;
     Thread _updateThread;
     boolean running;
     private PeriodeLengte lengte;
@@ -26,23 +25,22 @@ public class GuiFaceMenu
 
     public void start()
     {
+        System.out.println("Starten...");
         GBDotMatrix.drawText("Welkom!", true);
         currentFace.init();
-        currentFace.update(lengte);
+        currentFace.update();
         currentFace.draw();
         running = true;
-        _menuThread = new Thread(() ->  {menuThread();});
         _updateThread = new Thread(() ->  {updateThread();});
 
-        _menuThread.start();
         _updateThread.start();
     }
 
     public void stop()
     {
+        System.out.println("stoppen...");
         running = false;
         try{
-            _menuThread.join();
             _updateThread.join();
         }
         catch(InterruptedException E)
@@ -51,39 +49,35 @@ public class GuiFaceMenu
         }
     }
 
-    public void menuThread()
+    public void knopLinks()
     {
-        while(true)
-        {
-            if(GBKnoppen.blauweKnopLinks())
-            {
-                int currentIndex = guifaces.indexOf(currentFace);
-                if(currentIndex+1 >= guifaces.size())
-                    setCurrentFace(0);
-                else
-                    setCurrentFace(currentIndex+1);
-            }
+        System.out.println("Switching face!");
+        int currentIndex = guifaces.indexOf(currentFace);
+        if(currentIndex+1 >= guifaces.size())
+            setCurrentFace(0);
+        else
+            setCurrentFace(currentIndex+1);
+    }
 
-            if(GBKnoppen.blauweKnopRechts())
-            {
-                lengte = lengte.next();
-            }
-
-            IO.delay(500);
-            if(!running)
-                break;
-        }
+    public void knopRechts()
+    {
+        System.out.println("Switching period");
+        lengte = lengte.next();
+        currentFace.setPeriodeLengte(lengte);
+        currentFace.update();
+        currentFace.draw();
     }
 
     public void updateThread()
     {
         while(true)
         {
-            currentFace.update(lengte);
+            currentFace.update();
             currentFace.draw();
-            IO.delay(500);
+            IO.delay(1000*60*5);
             if(!running)
             {
+                System.out.println("stoppen met updaten!");
                 GBCijferWeergave.maakAlleLeeg();
                 GBDotMatrix.clrDMDisplay();
                 break;
