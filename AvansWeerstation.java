@@ -16,6 +16,7 @@ public class AvansWeerstation
     {
         guiFaceMenu = new GuiFaceMenu(connector);
         IO.init();
+        new Thread(() -> {GBKnoppen.aanUitThread(this); }).start();
     }
     
     public Periode getPeriodeDag()
@@ -44,5 +45,8 @@ public class AvansWeerstation
         guiFaceMenu.start();
     }
     
-    
+    public void stop()
+    {
+        guiFaceMenu.stop();
+    }
 }

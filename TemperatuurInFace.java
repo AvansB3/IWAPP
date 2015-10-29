@@ -47,7 +47,8 @@ public class TemperatuurInFace extends GuiFace
         {
             case uur:
                 hoofd = new Meting(connector.getMostRecentMeasurement()).getInsideTemp();
-                ArrayList<Measurement> mes = connector.getAllMeasurementsLastHours(1);
+                //ArrayList<Measurement> mes = connector.getAllMeasurementsLastHours(1);
+                ArrayList<Measurement> mes = connector.getLastXMeasurements(100);
                 Periode p = new Periode();
                 p.vullen(mes);
                 links = p.getHoogsteWaardeInsideTemp();

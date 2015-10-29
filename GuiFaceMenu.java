@@ -10,6 +10,9 @@ public class GuiFaceMenu
     private ArrayList<GuiFace> guifaces = new ArrayList<GuiFace>();
     private GuiFace currentFace;
 
+    Thread _menuThread;
+    Thread _updateThread;
+    boolean running;
     private PeriodeLengte lengte;
     /**
      * Constructor for objects of class GuiFaceMenu
@@ -27,9 +30,25 @@ public class GuiFaceMenu
         currentFace.init();
         currentFace.update(lengte);
         currentFace.draw();
-        menuThread();
-        new Thread(() ->  {menuThread();}).start();
-        new Thread(() ->  {updateThread();}).start();
+        running = true;
+        _menuThread = new Thread(() ->  {menuThread();});
+        _updateThread = new Thread(() ->  {updateThread();});
+
+        _menuThread.start();
+        _updateThread.start();
+    }
+
+    public void stop()
+    {
+        running = false;
+        try{
+            _menuThread.join();
+            _updateThread.join();
+        }
+        catch(InterruptedException E)
+        {
+            System.out.println("Couldn't join threads");
+        }
     }
 
     public void menuThread()
@@ -51,6 +70,8 @@ public class GuiFaceMenu
             }
 
             IO.delay(500);
+            if(!running)
+                break;
         }
     }
 
@@ -61,6 +82,11 @@ public class GuiFaceMenu
             currentFace.update(lengte);
             currentFace.draw();
             IO.delay(500);
+            if(!running)
+            {
+                //GBCijferWeergave;
+                break;
+            }
         }
     }
 

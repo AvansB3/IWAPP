@@ -29,4 +29,21 @@ public class GBKnoppen
         System.out.println("Wauw rechter knop");
         return IO.readShort(0x100) != 0;
     }
+    
+    public static void aanUitThread(AvansWeerstation weerstation)
+    {
+        boolean state=false;
+        while(true)
+        {
+            if (IO.readShort(0x80) != 0 && !state){
+                weerstation.start();
+                state=true;
+            }
+            if (IO.readShort(0x80) == 0 && state){
+                weerstation.stop();
+                state=false;
+            }
+        }
+        
+    }
 }
