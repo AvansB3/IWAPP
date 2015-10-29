@@ -129,6 +129,7 @@ public class GBDotMatrix
     public static void format()
     {
         GBDotMatrix.clrDMDisplay();
+        GBCijferWeergave.maakAlleLeeg();
         //stip
         IO.writeShort(0x42, 1 << 12 | 63 << 5 | 14);
         IO.writeShort(0x42, 1 << 12 | 64 << 5 | 14);
