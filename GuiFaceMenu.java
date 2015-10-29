@@ -84,7 +84,8 @@ public class GuiFaceMenu
             IO.delay(500);
             if(!running)
             {
-                //GBCijferWeergave;
+                GBCijferWeergave.maakAlleLeeg();
+                GBDotMatrix.clrDMDisplay();
                 break;
             }
         }

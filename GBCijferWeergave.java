@@ -102,4 +102,12 @@ public class GBCijferWeergave
             index+=2;
         }
     }
+    
+    public static void maakAlleLeeg()
+    {
+        for ( int z = 0x8; z <=0x18; z += 2)
+        {
+            IO.writeShort(z, 256);
+        }
+    }
 }
