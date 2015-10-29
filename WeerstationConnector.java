@@ -321,7 +321,6 @@ public class WeerstationConnector
                 "windSpeed, " +
                 "avgWindSpeed, " +
                 "windDir, " +
-                "windDirDeg, " +
                 "outsideHum, " +
                 "rainRate, " +
                 "UVLevel, " +
@@ -346,7 +345,6 @@ public class WeerstationConnector
                 m.setWindSpeed( Short.valueOf(rs.getString("windSpeed")) );
                 m.setAvgWindSpeed( Short.valueOf(rs.getString("avgWindSpeed")) );
                 m.setWindDir( Short.valueOf(rs.getString("windDir")) );
-                m.setWindDirDeg(Short.valueOf(rs.getString("windDirDeg")));
                 m.setOutsideHum( Short.valueOf(rs.getString("outsideHum")) );
                 m.setRainRate( Short.valueOf(rs.getString("rainRate")) );
                 m.setUVLevel( Short.valueOf(rs.getString("UVLevel")) );

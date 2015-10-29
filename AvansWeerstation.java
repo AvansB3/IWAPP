@@ -10,6 +10,14 @@ public class AvansWeerstation
     private ArrayList<Meting> metingen = new ArrayList<Meting>();
     private WeerstationConnector connector = new WeerstationConnector();
     
+    GuiFaceMenu guiFaceMenu;
+    
+    public AvansWeerstation()
+    {
+        guiFaceMenu = new GuiFaceMenu(connector);
+        IO.init();
+    }
+    
     public Periode getPeriodeDag()
     {
         Periode p = new Periode();
@@ -30,5 +38,11 @@ public class AvansWeerstation
         p.vullen(connector.getAllMeasurementsLastXHours(hours));
         return p;
     }
+    
+    public void start()
+    {
+        guiFaceMenu.start();
+    }
+    
     
 }
