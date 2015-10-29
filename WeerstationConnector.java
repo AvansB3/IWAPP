@@ -655,6 +655,65 @@ public class WeerstationConnector
 
         return mArr;
     }
+    
+    //===========================================EDITED BY MICHAEL=====================================================================================
+    public ArrayList<Measurement> getLastXMeasurements(int amount)
+    {
+
+        ArrayList<Measurement> mArr = new ArrayList<Measurement>();
+
+        try
+        {
+            // query:
+            Statement s = myConn.createStatement();
+            s.executeQuery("SELECT * FROM measurement ORDER BY measurementId DESC LIMIT "+amount+";");
+
+            ResultSet rs = s.getResultSet();
+            int count = 0;
+            while( rs.next() )
+            {
+                Measurement m = new Measurement();
+
+                m.setStationId( rs.getString("stationId") );
+                m.setDateStamp( rs.getTimestamp(2));
+                m.setBarometer( Short.valueOf(rs.getString("barometer")) );
+                m.setInsideTemp( Short.valueOf(rs.getString("insideTemp")) );
+                m.setInsideHum( Short.valueOf(rs.getString("insideHum")) );
+                m.setOutsideTemp( Short.valueOf(rs.getString("outsideTemp")) );
+                m.setWindSpeed( Short.valueOf(rs.getString("windSpeed")) );
+                m.setAvgWindSpeed( Short.valueOf(rs.getString("avgWindSpeed")) );
+                m.setWindDir( Short.valueOf(rs.getString("windDir")) );
+                m.setOutsideHum( Short.valueOf(rs.getString("outsideHum")) );
+                m.setRainRate( Short.valueOf(rs.getString("rainRate")) );
+                m.setUVLevel( Short.valueOf(rs.getString("UVLevel")) );
+                m.setSolarRad( Short.valueOf(rs.getString("solarRad")) );
+                m.setXmitBatt( Short.valueOf(rs.getString("xmitBatt")) );
+                m.setBattLevel( Short.valueOf(rs.getString("battLevel")) );
+                //              m.setForeIcon( Short.valueOf(rs.getString("foreIcon")) );
+                m.setSunrise( Short.valueOf(rs.getString("sunrise")) );
+                m.setSunset( Short.valueOf(rs.getString("sunset")) );
+
+                mArr.add(m);
+
+                count++;
+            }
+            rs.close();
+            s.close();
+        }
+        catch( SQLException ex)
+        {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        catch( Exception ex)
+        {
+            System.out.println("getMeasurement: " + ex.getMessage());
+        }
+
+        return mArr;
+    }
+    //====================================================================END======================================================================
 
     protected void finalize() throws Throwable
     {
