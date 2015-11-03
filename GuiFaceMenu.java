@@ -91,6 +91,8 @@ public class GuiFaceMenu
 
     public void setCurrentFace(int index)
     {
+        GBCijferWeergave.maakAlleLeeg();
+        GBDotMatrix.clrDMDisplay();
         currentFace = guifaces.get(index);
         currentFace.init();
     }
