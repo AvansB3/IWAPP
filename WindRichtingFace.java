@@ -5,7 +5,7 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class WindRichtingInFace extends GuiFace
+public class WindRichtingFace extends GuiFace
 {
 
     /**
@@ -13,10 +13,10 @@ public class WindRichtingInFace extends GuiFace
      */
 
     public PeriodeLengte len = PeriodeLengte.uur;
-
+    public WindRichting windRichting;
     public WeerstationConnector connector;
 
-    public WindRichtingInFace(WeerstationConnector connector)
+    public WindRichtingFace(WeerstationConnector connector)
     {
         this.connector = connector;
 
@@ -32,7 +32,7 @@ public class WindRichtingInFace extends GuiFace
     public void draw()
     {
         System.out.println("Draw!");
-        GBDotMatrix.windRichting("Noord");
+        GBDotMatrix.windRichting(windRichting);
     }
     
     @Override
@@ -41,8 +41,11 @@ public class WindRichtingInFace extends GuiFace
         System.out.println("Update!");
         switch(len)
         {
-            
-        } 
+            case uur:
+                Periode p = new Periode();
+                p.vullen(connector.getAllMeasurementsLastHours(1));
+                windRichting = p.getGemiddeldeWindDirDeg();
+        }
     }
 
     @Override

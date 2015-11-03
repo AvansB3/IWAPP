@@ -12,7 +12,6 @@ public class Periode
     private ArrayList<Meting> metingen = new ArrayList<Meting>();
     private GregorianCalendar dagBeginPeriode, dagEindePeriode;
     private ArrayList<Double> mediaanList = new ArrayList<Double>();
-    public String windRichting = getGemiddeldeWindDirDeg();
     double mediaan;
 
     public Periode()
@@ -588,8 +587,9 @@ public class Periode
         return gem;
     }
 
-    public String getGemiddeldeWindDirDeg()
+    public WindRichting getGemiddeldeWindDirDeg()
     {
+        WindRichting windRichting = WindRichting.Error;
         int totaal = 0;
         for(Meting waarde : metingen)
         {
@@ -605,27 +605,27 @@ public class Periode
         // Between 204 + 248 "ZuidWest"
         // Between 249 + 293 "West"
         // Between 294 + 337 "NoordWest"
-        windRichting = "Geen waarde";
+        
         if(gemiddelde <= 0)
             return windRichting;
         if (gemiddelde <= 23)
-            windRichting = "Noord";
+            windRichting = WindRichting.Noord;
         else if (gemiddelde <= 68)
-            windRichting = "Noord-Oost";
+            windRichting = WindRichting.NoordOost;
         else if (gemiddelde <= 113)
-            windRichting = "Oost"; 
+            windRichting = WindRichting.Oost; 
         else if(gemiddelde <= 158)
-            windRichting = "Zuid-Oost";
+            windRichting = WindRichting.ZuidOost;
         else if(gemiddelde <= 203)
-            windRichting = "Zuid";
+            windRichting = WindRichting.Zuid;
         else if(gemiddelde <= 248)
-            windRichting = "Zuid-West";
+            windRichting = WindRichting.ZuidWest;
         else if(gemiddelde <= 293)
-            windRichting = "West";
+            windRichting = WindRichting.West;
         else if(gemiddelde <= 337)
-            windRichting = "Noord-West";
+            windRichting = WindRichting.NoordWest;
         else if(gemiddelde <= 360)
-            windRichting = "Noord";
+            windRichting = WindRichting.Noord;
         return windRichting;
     }
 

@@ -19,6 +19,8 @@ public class GuiFaceMenu
     public GuiFaceMenu(WeerstationConnector connector)
     {
         guifaces.add(new TemperatuurInFace(connector));
+        guifaces.add(new RainRateFace(connector));
+        guifaces.add(new WindRichtingFace(connector));
         currentFace = guifaces.get(0);
         lengte = PeriodeLengte.uur;
     }
@@ -40,6 +42,8 @@ public class GuiFaceMenu
     {
         System.out.println("stoppen...");
         running = false;
+        GBCijferWeergave.maakAlleLeeg();
+        GBDotMatrix.clrDMDisplay();
         try{
             _updateThread.join();
         }

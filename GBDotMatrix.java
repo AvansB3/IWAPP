@@ -32,15 +32,15 @@ public class GBDotMatrix
         IO.writeShort(0x40,0x01);
     } 
 
-    public static void windRichting(String windrichting)
+    public static void windRichting(WindRichting windrichting)
     {   
         clrDMDisplay();
-        if (windrichting == "Geen waarde"){
+        if (windrichting == WindRichting.Error){
             drawText("De windrichting heeft \ngeen waarde", true);
             IO.delay(2000);
             format();
         }
-        if (windrichting == "Noord"){
+        if (windrichting == WindRichting.Noord){
             drawText("De windrichting is:\nNoord", true);
             IO.delay(2000);
             format();
@@ -54,7 +54,7 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 63 << 5 | 13);
             IO.writeShort(0x42, 1 << 12 | 65 << 5 | 13);
         }
-        if (windrichting == "Zuid"){
+        if (windrichting == WindRichting.Zuid){
             drawText("De windrichting is:\nZuid", true);
             IO.delay(2000);
             format();
@@ -68,7 +68,7 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 63 << 5 | 19);
             IO.writeShort(0x42, 1 << 12 | 65 << 5 | 19);
         }
-        if (windrichting == "Oost"){
+        if (windrichting == WindRichting.Oost){
             drawText("De windrichting is:\nOost", true);
             IO.delay(2000);
             format();
@@ -82,7 +82,7 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 67 << 5 | 17);
             IO.writeShort(0x42, 1 << 12 | 70 << 5 | 17);
         }
-        if (windrichting == "West"){
+        if (windrichting == WindRichting.West){
             drawText("De windrichting is:\nWest", true);
             IO.delay(2000);
             format();
@@ -96,7 +96,7 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 61 << 5 | 17);
             IO.writeShort(0x42, 1 << 12 | 58 << 5 | 17);
         }
-        if (windrichting == "Noord-Oost"){
+        if (windrichting == WindRichting.NoordOost){
             drawText("De windrichting is:\nNoord-Oost", true);
             IO.delay(2000);
             format();
@@ -108,7 +108,7 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 67 << 5 | 13);
             IO.writeShort(0x42, 1 << 12 | 66 << 5 | 14);
         }
-        if (windrichting == "Noord-West"){
+        if (windrichting == WindRichting.NoordWest){
             drawText("De windrichting is:\nNoord-West", true);
             IO.delay(2000);
             format();
@@ -120,7 +120,7 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 61 << 5 | 13);
             IO.writeShort(0x42, 1 << 12 | 62 << 5 | 14);
         }
-        if (windrichting == "Zuid-West"){
+        if (windrichting == WindRichting.ZuidWest){
             drawText("De windrichting is:\nZuid-West", true);
             IO.delay(2000);
             format();
@@ -132,7 +132,7 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 61 << 5 | 19);
             IO.writeShort(0x42, 1 << 12 | 62 << 5 | 18);
         }
-        if (windrichting == "Zuid-Oost"){
+        if (windrichting == WindRichting.ZuidOost){
             drawText("De windrichting is:\nZuid-Oost", true);
             IO.delay(2000);
             format();

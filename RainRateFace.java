@@ -5,7 +5,7 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class rainRateInFace extends GuiFace
+public class RainRateFace extends GuiFace
 {
 
     /**
@@ -20,7 +20,7 @@ public class rainRateInFace extends GuiFace
 
     public WeerstationConnector connector;
 
-    public rainRateInFace(WeerstationConnector connector)
+    public RainRateFace(WeerstationConnector connector)
     {
         this.connector = connector;
 
@@ -29,7 +29,7 @@ public class rainRateInFace extends GuiFace
     @Override
     public void init()
     {
-        GBDotMatrix.drawText("rainRate Binnen\n1 uur", true);
+        GBDotMatrix.drawText("Regenval\n1 uur", true);
         IO.delay(2000);
         GBDotMatrix.drawText("      Gemiddeld\nMax              Min", true);
     }
