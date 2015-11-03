@@ -7,7 +7,7 @@
  */
 public class GBDotMatrix
 {
-
+    private String windRichtingGUI;
     /**
      * Constructor for objects of class GBDotMatrix
      */
@@ -33,11 +33,17 @@ public class GBDotMatrix
     } 
 
     public static void windRichting(String windrichting)
-    {
-        GBDotMatrix.clrDMDisplay();
-        if (windrichting == "Noord")
-        {
-            GBDotMatrix.format();
+    {   
+        clrDMDisplay();
+        if (windrichting == "Geen waarde"){
+            drawText("De windrichting heeft \ngeen waarde", true);
+            IO.delay(2000);
+            format();
+        }
+        if (windrichting == "Noord"){
+            drawText("De windrichting is:\nNoord", true);
+            IO.delay(2000);
+            format();
             IO.writeShort(0x42, 1 << 12 | 64 << 5 | 9);
             IO.writeShort(0x42, 1 << 12 | 64 << 5 | 10);
             IO.writeShort(0x42, 1 << 12 | 63 << 5 | 10);
@@ -49,7 +55,9 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 65 << 5 | 13);
         }
         if (windrichting == "Zuid"){
-            GBDotMatrix.format();
+            drawText("De windrichting is:\nZuid", true);
+            IO.delay(2000);
+            format();
             IO.writeShort(0x42, 1 << 12 | 64 << 5 | 23);
             IO.writeShort(0x42, 1 << 12 | 64 << 5 | 22);
             IO.writeShort(0x42, 1 << 12 | 63 << 5 | 22);
@@ -61,7 +69,9 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 65 << 5 | 19);
         }
         if (windrichting == "Oost"){
-            GBDotMatrix.format();
+            drawText("De windrichting is:\nOost", true);
+            IO.delay(2000);
+            format();
             IO.writeShort(0x42, 1 << 12 | 67 << 5 | 15);
             IO.writeShort(0x42, 1 << 12 | 70 << 5 | 15);
             IO.writeShort(0x42, 1 << 12 | 67 << 5 | 16);
@@ -73,7 +83,9 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 70 << 5 | 17);
         }
         if (windrichting == "West"){
-            GBDotMatrix.format();
+            drawText("De windrichting is:\nWest", true);
+            IO.delay(2000);
+            format();
             IO.writeShort(0x42, 1 << 12 | 61 << 5 | 15);
             IO.writeShort(0x42, 1 << 12 | 58 << 5 | 15);
             IO.writeShort(0x42, 1 << 12 | 61 << 5 | 16);
@@ -85,7 +97,9 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 58 << 5 | 17);
         }
         if (windrichting == "Noord-Oost"){
-            GBDotMatrix.format();
+            drawText("De windrichting is:\nNoord-Oost", true);
+            IO.delay(2000);
+            format();
             IO.writeShort(0x42, 1 << 12 | 68 << 5 | 10);
             IO.writeShort(0x42, 1 << 12 | 70 << 5 | 10);
             IO.writeShort(0x42, 1 << 12 | 69 << 5 | 11);
@@ -95,7 +109,9 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 66 << 5 | 14);
         }
         if (windrichting == "Noord-West"){
-            GBDotMatrix.format();
+            drawText("De windrichting is:\nNoord-West", true);
+            IO.delay(2000);
+            format();
             IO.writeShort(0x42, 1 << 12 | 60 << 5 | 10);
             IO.writeShort(0x42, 1 << 12 | 58 << 5 | 10);
             IO.writeShort(0x42, 1 << 12 | 59 << 5 | 11);
@@ -105,7 +121,9 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 62 << 5 | 14);
         }
         if (windrichting == "Zuid-West"){
-            GBDotMatrix.format();
+            drawText("De windrichting is:\nZuid-West", true);
+            IO.delay(2000);
+            format();
             IO.writeShort(0x42, 1 << 12 | 60 << 5 | 22);
             IO.writeShort(0x42, 1 << 12 | 58 << 5 | 22);
             IO.writeShort(0x42, 1 << 12 | 59 << 5 | 21);
@@ -115,7 +133,9 @@ public class GBDotMatrix
             IO.writeShort(0x42, 1 << 12 | 62 << 5 | 18);
         }
         if (windrichting == "Zuid-Oost"){
-            GBDotMatrix.format();
+            drawText("De windrichting is:\nZuid-Oost", true);
+            IO.delay(2000);
+            format();
             IO.writeShort(0x42, 1 << 12 | 68 << 5 | 22);
             IO.writeShort(0x42, 1 << 12 | 70 << 5 | 22);
             IO.writeShort(0x42, 1 << 12 | 69 << 5 | 21);
@@ -128,7 +148,7 @@ public class GBDotMatrix
 
     public static void format()
     {
-        GBDotMatrix.clrDMDisplay();
+        clrDMDisplay();
         GBCijferWeergave.maakAlleLeeg();
         //stip
         IO.writeShort(0x42, 1 << 12 | 63 << 5 | 14);

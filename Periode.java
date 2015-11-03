@@ -12,6 +12,7 @@ public class Periode
     private ArrayList<Meting> metingen = new ArrayList<Meting>();
     private GregorianCalendar dagBeginPeriode, dagEindePeriode;
     private ArrayList<Double> mediaanList = new ArrayList<Double>();
+    public String windRichting = getGemiddeldeWindDirDeg();
     double mediaan;
 
     public Periode()
@@ -25,7 +26,7 @@ public class Periode
         dagBeginPeriode = begin;
         dagEindePeriode = eind;
     }
-
+    
     public void setDagBeginPeriode(GregorianCalendar begin)
     {
         dagBeginPeriode = begin;
@@ -604,7 +605,7 @@ public class Periode
         // Between 204 + 248 "ZuidWest"
         // Between 249 + 293 "West"
         // Between 294 + 337 "NoordWest"
-        String windRichting = "Geen waarde";
+        windRichting = "Geen waarde";
         if(gemiddelde <= 0)
             return windRichting;
         if (gemiddelde <= 23)
